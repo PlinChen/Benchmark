@@ -4,7 +4,7 @@ using System.Collections;
 
 public class InstantiateDestroy : ScriptingTest {
 
-	public GUIText output;
+	public Text output;
 	public GameObject go;
 
 	public override void UpdateTest () 

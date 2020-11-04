@@ -4,7 +4,7 @@ using System.Collections;
 
 public class Mandelbrot : ScriptingTest {
 
-	public GUITexture outputImage;
+	public Image outputImage;
 	Texture2D output;
 	public int width = 512;
 	public int height = 512;
@@ -86,8 +86,8 @@ public class Mandelbrot : ScriptingTest {
 		{
 			colors = new Color32[width*height];
 			output = new Texture2D(width, height, TextureFormat.ARGB32, false);
-			outputImage.texture = output;
-			scale = 2 * MaxValueExtent / Mathf.Min(width, height);
+			outputImage.sprite = Sprite.Create(output, new Rect(0, 0, width, height), Vector2.zero);//new Rect(0,0,width,height) ,Vector2.zero outputImage.sprite.rect, outputImage.sprite.pivot
+            scale = 2 * MaxValueExtent / Mathf.Min(width, height);
 		}
 		GenerateBitmap();
 		score += -1 + iterationCounter / 10000;
