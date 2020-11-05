@@ -29,15 +29,15 @@
 | **TOTAL_POINTS**  |    |    |   |
 |**OVERALL_SCORE**   |88362|97180|       93454|
 
-### LoadTime (ms)
+### LoadTime (ms)  (Test Twice)
 | | new EMCC & Split | new EMCC & No Split  |old EMCC|
 | :-------: | :-------: | :-------: | :-------: |
-|Data|1115|93|950|
-| Code  |1512|168|1086|
-| Framework  |234|92|91|
-|Time to Screen |12526|2873|4010|
-| Time to Interactive|465977|2902|4142|
-| Engine Initialization  |127|159|185|
+|Data|1115 / 263|93 / 182|950 / 238|
+| Code  |1512 / 267|168 / 186|1086 / 239|
+| Framework  |234 / 264|92 / 178|91 / 237|
+|Time to Screen |12526 / 4200|2873 / 2863|4010 / 2845|
+| Time to Interactive|465977 / 4245|2902 / 2946|4142 / 2922|
+| Engine Initialization  |127 / 241|159 / 293|185 / 237|
 
 ---
 ## Windows  Desktop
