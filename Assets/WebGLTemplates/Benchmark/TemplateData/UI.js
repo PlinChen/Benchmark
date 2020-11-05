@@ -11,10 +11,6 @@ var UI= {
       onQuit();
       UI.container.removeChild(UI.main);
     });
-    if (!UnityLoader.SystemInfo.mobile)
-      this.createButton("Enable Fullscreen", function(){
-        gameInstance.SetFullscreen(1);
-      });
   },
   createButton: function (text, callback) {
     var button = document.createElement("button");

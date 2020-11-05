@@ -11,8 +11,8 @@ var Stats= {
     },
     updateText: function(){
       Stats.Memory.element.innerText = "Initial Heap Size: " + (Stats.Memory.initialHeapSize / 1024 / 1024);
-      Stats.Memory.element.innerText += "\nHeap Size: " + (gameInstance.Module.asmLibraryArg.getTotalMemory() / 1024 / 1024);
-      Stats.Memory.element.innerText += "\nHigh Watermark: " + (gameInstance.Module.HEAP32[gameInstance.Module.asmLibraryArg.DYNAMICTOP_PTR>> 2] / 1024 / 1024).toFixed(0);
+      // Stats.Memory.element.innerText += "\nHeap Size: " + (gameInstance.Module.asmLibraryArg.getTotalMemory() / 1024 / 1024);
+      // Stats.Memory.element.innerText += "\nHigh Watermark: " + (gameInstance.Module.HEAP32[gameInstance.Module.asmLibraryArg.DYNAMICTOP_PTR>> 2] / 1024 / 1024).toFixed(0);
     }
   },
   Loading: {
