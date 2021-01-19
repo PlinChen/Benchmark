@@ -7,7 +7,7 @@ public class MandelbrotGPU : FPSTest {
 	public Material output;
     public RectTransform image;
 
-/*    float scale = 1.0f;
+/*  float scale = 1.0f;
     float xShift = 0;
     int MaxIterations = 1;
   */

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿#define USE_OPERATER
+using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 
@@ -20,19 +21,47 @@ public class Mandelbrot : ScriptingTest {
 			this.Re = re;
 			this.Im = im;
 		}
-	 
-		public static ComplexNumber operator +(ComplexNumber x, ComplexNumber y)
+
+        public void Add(ComplexNumber y)
+        {
+            Re += y.Re;
+            Im += y.Im;
+            //return this;
+        }
+
+        public void Multiply(ComplexNumber y)
+        {
+            var xRe = Re * y.Re - Im * y.Im;
+            var xIm = Re * y.Im + Im * y.Re;
+            Re = xRe;
+            Im = xIm;
+            //return this;
+        }
+
+        public static ComplexNumber Add(ComplexNumber x, ComplexNumber y)
+        {
+            return new ComplexNumber(x.Re + y.Re, x.Im + y.Im);
+        }
+
+        public static ComplexNumber Multiply(ComplexNumber x, ComplexNumber y)
 		{
-			return new ComplexNumber(x.Re + y.Re, x.Im + y.Im);
-		}
-	 
-		public static ComplexNumber operator *(ComplexNumber x, ComplexNumber y)
-		{
+            //stack save at the begin of this function
 			return new ComplexNumber(x.Re * y.Re - x.Im * y.Im,
 				x.Re * y.Im + x.Im * y.Re);
 		}
-	 
-		public float Norm()
+
+        public static ComplexNumber operator +(ComplexNumber x, ComplexNumber y)
+        {
+            return new ComplexNumber(x.Re + y.Re, x.Im + y.Im);
+        }
+        public static ComplexNumber operator *(ComplexNumber x, ComplexNumber y)
+        {
+            //stack save at the begin of this function
+            return new ComplexNumber(x.Re * y.Re - x.Im * y.Im,
+                x.Re * y.Im + x.Im * y.Re);
+        }
+
+        public float Norm()
 		{
 			return Re * Re + Im * Im;
 		}
@@ -53,17 +82,23 @@ public class Mandelbrot : ScriptingTest {
 		ComplexNumber z = new ComplexNumber();
 		do
 		{
-			z = z * z + c;
-			iteration++;
+#if USE_OPERATER
+            z = z * z + c;//always: "stack save" before '*', "stack restore after" '+' or before '+' 
+#else
+            z.Multiply(z);
+            z.Add(c);
+#endif
+            iteration++;
 		} while (z.Norm() < MaxNorm && iteration < MaxIterations);
 		iterationCounter += iteration;
-		if (iteration < MaxIterations)
-			return iteration;
-		else
-			return -1;
-	}
- 
-	void GenerateBitmap()
+        if (iteration < MaxIterations)
+            return iteration;
+        else
+            return -1;
+        // "stack restore" at the end of CalcMandelbrotSetColor
+    }
+
+    void GenerateBitmap()
 	{
 		for (int i = 0; i < height; i++)
 		{
@@ -72,7 +107,7 @@ public class Mandelbrot : ScriptingTest {
 			{
 				float x = ((j - width / 2)) * scale +xShift;
 				int col = (CalcMandelbrotSetColor(new ComplexNumber(x, y)));
-				if (col == -1 )
+                if (col == -1 )
 					colors[i*width+j] = new Color32 (0,0,0,255);
 				else
 					colors[i*width+j] = new Color32 ((byte) (128 + Mathf.Sin(col * 0.11f) * 127),(byte) (128 + Mathf.Cos(col * 0.077f) * 127),(byte) (128 + Mathf.Sin(col * 0.027f) * 127),255);

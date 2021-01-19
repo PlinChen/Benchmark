@@ -312,44 +312,6 @@ var UnityLoader = UnityLoader || {
   
   },
   Error: {
-    // stacktrace example:
-    //
-    // [Chrome]
-    // Error
-    //    at Array.eWg (blob:http%3A//localhost%3A8080/7dd54af3-48c5-47e1-893f-5f1ef09ab62b:10:238896)
-    //    at Object.P7h [as dynCall_iiii] (blob:http%3A//localhost%3A8080/7dd54af3-48c5-47e1-893f-5f1ef09ab62b:28:33689)
-    //    at invoke_iiii (blob:http%3A//localhost%3A8080/972f149f-a28e-4ee9-a1c7-45e8c4b0998b:1:334638)
-    //    at DJd (blob:http%3A//localhost%3A8080/7dd54af3-48c5-47e1-893f-5f1ef09ab62b:15:260807)
-    //    at Object.dynCall (blob:http%3A//localhost%3A8080/972f149f-a28e-4ee9-a1c7-45e8c4b0998b:1:7492)
-    //    at browserIterationFunc (blob:http%3A//localhost%3A8080/972f149f-a28e-4ee9-a1c7-45e8c4b0998b:1:207518)
-    //    at Object.runIter (blob:http%3A//localhost%3A8080/972f149f-a28e-4ee9-a1c7-45e8c4b0998b:1:189915)
-    //
-    // [Chrome WebAssembly]
-    //    at  (<WASM>[24622]+70)
-    //    at  (<WASM>[24000]+73)
-    //
-    // [Firefox]
-    // eWg@blob:http://localhost:8080/0e677969-e11c-e24b-bb23-4f3afdbd5a3a:10:1
-    // P7h@blob:http://localhost:8080/0e677969-e11c-e24b-bb23-4f3afdbd5a3a:28:1
-    // invoke_iiii@blob:http://localhost:8080/67513e21-4cf2-de4e-a571-c6ee67cc2a72:1:334616
-    // DJd@blob:http://localhost:8080/0e677969-e11c-e24b-bb23-4f3afdbd5a3a:15:1
-    // Runtime.dynCall@blob:http://localhost:8080/67513e21-4cf2-de4e-a571-c6ee67cc2a72:1:7469
-    // _emscripten_set_main_loop/browserIterationFunc@blob:http://localhost:8080/67513e21-4cf2-de4e-a571-c6ee67cc2a72:1:207510
-    // Browser.mainLoop.runIter@blob:http://localhost:8080/67513e21-4cf2-de4e-a571-c6ee67cc2a72:1:189915
-    //
-    // [Firefox WebAssembly]
-    // wasm-function[24622]@blob:null/2e0a79af-37a7-ac43-9534-4ac66e23fea4:8059611:1
-    // wasm-function[24000]@blob:null/2e0a79af-37a7-ac43-9534-4ac66e23fea4:7932153:1
-    //
-    // [Safari]
-    // eWg@blob:http://localhost:8080/6efe7f5a-b930-45c3-9175-296366f9d9f4:10:238896
-    // P7h@blob:http://localhost:8080/6efe7f5a-b930-45c3-9175-296366f9d9f4:28:33689
-    // invoke_iiii@blob:http://localhost:8080/597cffca-fc52-4586-9da7-f9c8e591738b:1:334638
-    // DJd@blob:http://localhost:8080/6efe7f5a-b930-45c3-9175-296366f9d9f4:15:260809
-    // dynCall@blob:http://localhost:8080/597cffca-fc52-4586-9da7-f9c8e591738b:1:7496
-    // browserIterationFunc@blob:http://localhost:8080/597cffca-fc52-4586-9da7-f9c8e591738b:1:207525
-    // runIter@blob:http://localhost:8080/597cffca-fc52-4586-9da7-f9c8e591738b:1:189919
-
     init: (function () {
       Error.stackTraceLimit = 50;
       window.addEventListener("error", function (e) {

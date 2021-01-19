@@ -6,3 +6,7 @@ It has been used to compare browsers performance when running Unity WebGL conten
 * [WebAssembly Load Times and Performance](https://blogs.unity3d.com/2018/09/17/webassembly-load-times-and-performance/)
 * [Updated WebGL Benchmark Results](https://blogs.unity3d.com/2015/12/15/updated-webgl-benchmark-results/)
 * [Benchmarking Unity performance in WebGL](https://blogs.unity3d.com/2014/10/07/benchmarking-unity-performance-in-webgl/)
+
+
+# Unity Benchmark Profiling Advices
+* Replace your operator override methods with normal methods, it helps really much if you have invoked such  frequently.

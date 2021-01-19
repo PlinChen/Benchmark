@@ -42,3 +42,4 @@ var Timer = /** @class */ (function () {
     };
     return Timer;
 }());
+window.Timer=Timer;

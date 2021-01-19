@@ -46,3 +46,5 @@ var Stats= {
     }
   }
 };
+
+window.Stats = Stats;
